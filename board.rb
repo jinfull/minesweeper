@@ -34,7 +34,6 @@ class Board
         end
 
         @mine_positions = all_positions.sample(@mine_count)
-        @mine_positions
     end
 
 
