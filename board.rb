@@ -14,6 +14,7 @@ class Board
         self.populate_board
         self.random_mine_positions
         self.random_mine_placements
+        self.update_all_adj_mine_counts
     end
 
     def populate_board
