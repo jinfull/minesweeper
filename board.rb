@@ -51,8 +51,6 @@ class Board
                 @board[row_i][col_i].face_up = true
             end
         end
-
-        self.render
     end
     
     def render
