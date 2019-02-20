@@ -3,14 +3,17 @@ require "byebug"
 
 class Board
     attr_accessor :board
-    attr_reader :size
+    attr_reader :size, :mine_count
 
     def initialize
         @size = 9
         @board = Array.new(@size) { Array.new (@size) }
 
+        @mine_count = ((@size * @size) / 10.0).ceil
 
         self.populate_board
+        self.random_mine_positions
+        self.random_mine_placements
     end
 
     def populate_board
@@ -20,6 +23,28 @@ class Board
             end
         end
     end
+
+    def random_mine_positions
+        my_arr = []
+
+        (0...@size).each do |row_i|
+            (0...@size).each do |col_i|
+                my_arr << [row_i, col_i]
+            end
+        end
+
+        my_arr.shuffle.sample(@mine_count)
+    end
+
+
+    def random_mine_placements
+        random_mine_positions.each do |position|
+            self[*position].is_bomb = true
+        end
+
+        nil
+    end
+    
 
     def render
         (0...@size).each do |row_i|
