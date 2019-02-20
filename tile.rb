@@ -1,4 +1,5 @@
 require_relative "board"
+require "colorize"
 
 class Tile
     attr_reader 
@@ -6,7 +7,7 @@ class Tile
 
     def initialize(is_bomb)
         @is_bomb = is_bomb
-        @adj_mine_count = nil
+        @adj_mine_count = 0
 
         @face_up = false
     end
@@ -16,13 +17,20 @@ class Tile
         nil
     end
 
+    def count_adj_mines
+
+
+    end
+
     def value
         if @is_bomb
-            return "B "
-        elsif @adj_mine_count != nil
-            return "#{adj_mine_count} "
+            return "X ".colorize(:red)
         else
-            return "  "
+            if adj_mine_count == 0
+                return "#{adj_mine_count} "
+            else
+                return "#{@adj_mine_count} ".colorize(:yellow)
+            end
         end
     end
 end

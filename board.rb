@@ -45,7 +45,16 @@ class Board
         nil
     end
     
+    def reveal_all
+        (0...@size).each do |row_i|
+            (0...@size).each do |col_i|
+                @board[row_i][col_i].face_up = true
+            end
+        end
 
+        self.render
+    end
+    
     def render
         (0...@size).each do |row_i|
             (0...@size).each do |col_i|
