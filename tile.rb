@@ -17,10 +17,10 @@ class Tile
         nil
     end
 
-    def count_adj_mines
+    # def count_adj_mines
 
 
-    end
+    # end
 
     def value
         if @is_bomb

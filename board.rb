@@ -3,7 +3,7 @@ require "byebug"
 
 class Board
     attr_accessor :board
-    attr_reader :size, :mine_count
+    attr_reader :size, :mine_count, :mine_positions
 
     def initialize
         @size = 9
@@ -25,15 +25,16 @@ class Board
     end
 
     def random_mine_positions
-        my_arr = []
+        all_positions = []
 
         (0...@size).each do |row_i|
             (0...@size).each do |col_i|
-                my_arr << [row_i, col_i]
+                all_positions << [row_i, col_i]
             end
         end
 
-        my_arr.sample(@mine_count)
+        @mine_positions = all_positions.sample(@mine_count)
+        @mine_positions
     end
 
 
@@ -52,6 +53,12 @@ class Board
             end
         end
     end
+
+    # def count_adj_mines(tile)
+        
+        
+    #     tile.adj_mine_count = 
+    # end
     
     def render
         (0...@size).each do |row_i|
