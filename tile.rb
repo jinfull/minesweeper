@@ -15,4 +15,14 @@ class Tile
         @face_up = true
         nil
     end
+
+    def value
+        if @is_bomb
+            return "B "
+        elsif @adj_mine_count != nil
+            return "#{adj_mine_count} "
+        else
+            return "  "
+        end
+    end
 end

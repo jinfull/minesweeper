@@ -33,7 +33,7 @@ class Board
             end
         end
 
-        my_arr.shuffle.sample(@mine_count)
+        my_arr.sample(@mine_count)
     end
 
 
@@ -49,14 +49,13 @@ class Board
     def render
         (0...@size).each do |row_i|
             (0...@size).each do |col_i|
-                if @board[row_i][col_i].face_up && @board[row_i][col_i].is_bomb
-                    print "B "
-                elsif @board[row_i][col_i].face_up && !@board[row_i][col_i].is_bomb
-                    print "# "
+                if @board[row_i][col_i].face_up
+                    print "#{@board[row_i][col_i].value}"
                 else
                     print "? "
                 end
             end
+
             puts "\n"
         end
 
