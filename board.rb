@@ -1,4 +1,5 @@
 require_relative "tile"
+require "byebug"
 
 class Board
     attr_accessor :board
@@ -37,6 +38,12 @@ class Board
         nil
     end
 
+    def [](row, col)
+        @board[row][col]
+    end
 
+    def []=(row, col, value)
+        @board[row][col] = value
+    end
 end
 
