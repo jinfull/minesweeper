@@ -72,6 +72,16 @@ class Board
         counter -= 1 if tile.is_bomb # accounts for the tile itself being a bomb
         tile.adj_mine_count = counter
     end
+
+    def update_all_adj_mine_counts
+        (0...@size).each do |row_i|
+            (0...@size).each do |col_i|
+                count_adj_mines(@board[row_i][col_i])
+            end
+        end
+
+        nil
+    end
     
     def render
         (0...@size).each do |row_i|

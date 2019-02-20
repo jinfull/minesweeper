@@ -20,11 +20,6 @@ class Tile
         nil
     end
 
-    # def count_adj_mines
-
-
-    # end
-
     def value
         if @is_bomb
             return "X ".colorize(:red)
